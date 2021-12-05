@@ -1,4 +1,3 @@
 # Helper
-Kumpulan helper script
-Semoga bisa membantu
-</>
+# Kumpulan helper script
+# Semoga bisa membantu
