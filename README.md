@@ -1,3 +1,2 @@
 # Helper
-# Kumpulan helper script
-# Semoga bisa membantu
+Kumpulan <script /> helper
