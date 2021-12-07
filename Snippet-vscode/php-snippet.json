@@ -1,0 +1,196 @@
+{
+	"Cetak dengan echo": {
+		"prefix": "e",
+		"body": [
+			"echo '$1';"
+		],
+		"description": "Biar ga ribet"
+	},
+	"Cetak sintak pre": {
+		"prefix": "pre",
+		"body": [
+			"echo '<pre>'; print_r($1); echo '</pre>';"
+		],
+		"description": "Biar ga ribet"
+	},
+	"center": {
+		"prefix": "center",
+		"body": "class='text-center'"
+	},
+	"userdata": {
+		"prefix": "userdata",
+		"body": "$$this->session->userdata('$1');"
+	},
+	"join": {
+		"prefix": "join",
+		"body": "$$this->db->join($1, $2);"
+	},
+	"database": {
+		"prefix": "db",
+		"body": "$$this->db->$1"
+	},
+	"set flashdata": {
+		"prefix": "set_flash",
+		"body": "$$this->session->set_flashdata($1,$2);"
+	},
+	"where": {
+		"prefix": "where",
+		"body": "$$this->db->where('$1', '$2');"
+	},
+	"get": {
+		"prefix": "get",
+		"body": "$$this->db->get('$1');"
+	},
+	"select": {
+		"prefix": "select",
+		"body": "$$this->db->select('$1');"
+	},
+	"update": {
+		"prefix": "update",
+		"body": "$$this->db->update('$1', $2);"
+	},
+	"insert": {
+		"prefix": "insert",
+		"body": "$$this->db->insert('$1', $2);"
+	},
+	"delete": {
+		"prefix": "delete",
+		"body": "$$this->db->delete('$1');"
+	},
+	"post": {
+		"prefix": "post",
+		"body": "$$this->input->post('$1', TRUE);"
+	},
+	"last_query": {
+		"prefix": "last_query",
+		"body": "echo '<pre>'; print_r($$this->db->last_query()); echo '</pre>';"
+	},
+	"filterDate": {
+		"prefix": "filterDate",
+		"body": "filterDate($$this->input->get('awal'), $$this->input->get('akhir'), base_url('$1'));"
+	},
+	"modal": {
+		"prefix": "modal",
+		"body": [
+			"<div id=\"modal${1:ID}\" class=\"modal fade\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">",
+			"\t<div class=\"modal-dialog modal-md\" role=\"document\">",
+			"\t\t<div class=\"modal-content\">",
+			"\t\t\t<div class=\"modal-header\">",
+			"\t\t\t\t<h5 class=\"modal-title\"></h5>",
+			"\t\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">",
+			"\t\t\t\t\t<span aria-hidden=\"true\">&times;</span>",
+			"\t\t\t\t</button>",
+			"\t\t\t</div>",
+			"\t\t\t<div class=\"modal-body text-sm\">",
+            "\t\t\t\t<form action=\"\" method=\"post\" id=\"form${1:ID}\" role=\"form\" enctype=\"multipart/form-data\">",
+			"\t\t\t\t<div class=\"row px-3\">",
+			"\t\t\t\t\t<div class=\"col-12\">",
+			"\t\t\t\t\t\t<div class=\"form-group\">",
+			"\t\t\t\t\t\t\t<label for=\"varchar\">${2:Label}</label>",
+			"\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control form-control-sm\" name=\"${3:id_label}\" id=\"${3:id_label}\" placeholder=\"${2:Label}\" value=\"\" />",
+			"\t\t\t\t\t\t</div>",
+			"\t\t\t\t\t</div>",
+			"\t\t\t\t</div>",
+			"\t\t\t</div>",
+			"\t\t\t<div class=\"modal-footer\">",
+			"\t\t\t\t<div class=\"col-md-12 text-center\">",
+			"\t\t\t\t\t<button type=\"submit\" class=\"btn btn-action-modal btn-sm btn-{{ bgCard() }}\">Simpan</button>",
+			"\t\t\t\t\t<button type=\"button\" class=\"btn btn-action-modal btn-sm btn-secondary\" data-dismiss=\"modal\">Batal</button>",
+			"\t\t\t\t\t</form>",
+			"\t\t\t\t</div>",
+			"\t\t\t</div>",
+			"\t\t</div>",
+			"\t</div>",
+			"</div>"
+		]
+	},
+	"Index function Invesmart": {
+		"prefix": "findexfunctionInvesmart",
+		"body": [
+			"public function index(Request $$request){",
+				"\t$$response = Http::withToken(get_token())->get(services('superadmin/$1'));",
+				"\tif($$response){",
+					"\t\tif($$response['status'] == true){",
+						"\t\t\t$$data = [",
+							"\t\t\t\t'title'     => '${2:MENU}',",
+							"\t\t\t\t'titleCard' => 'LIST ${2:MENU}',",
+							"\t\t\t\t'data'      => $$response['data']",
+						"\t\t\t];",
+						"\t\t\treturn view('${3:menu}.index', $$data);",
+					"\t\t} else {",
+						"\t\t\treturn redirect()->back()->with([",
+							"\t\t\t\t'gagal' => $$response['message'],",
+						"\t\t\t]);",
+					"\t\t}",
+				"\t} else {",
+					"\t\treturn redirect()->back()->with([",
+						"\t\t\t'gagal' => 'Timeout',",
+					"\t\t]);",
+				"\t}",
+			"}"
+		]
+	},
+	"InputAction function Invesmart": {
+		"prefix": "finputactionInvesmart",
+		"body": [
+			"public function inputAction(Request $$request){",
+				"\t$$response = Http::withToken(get_token())->post(services('superadmin/${1:url}'), [",
+					"\t\t'${2:field1}'    => $$request->${2:field1},",
+					"\t\t'${3:field1}'    => $$request->${3:field1},",
+					"\t\t'${4:field1}'    => $$request->${4:field1},",
+					"\t\t'${5:field1}'    => $$request->${5:field1},",
+					"\t\t'${6:field1}'    => $$request->${6:field1},",
+				"\t]);",
+			"",
+				"\tif($$response){",
+					"\t\tif($$response['status'] == true){",
+						"\t\t\treturn redirect()->back()->with([",
+							"\t\t\t\t'berhasil' => $$response['message'],",
+						"\t\t\t]);",
+					"\t\t} else {",
+						"\t\t\treturn redirect()->back()->with([",
+							"\t\t\t\t'gagal' => $$response['message'],",
+						"\t\t\t]);",
+					"\t\t}",
+				"\t} else {",
+					"\t\treturn redirect()->back()->with([",
+						"\t\t\t'gagal' => 'Timeout',",
+					"\t\t]);",
+				"\t}",
+			"}"
+		]
+	},
+	"Delete function Invesmart": {
+		"prefix": "fdeleteactionInvesmart",
+		"body": [
+			"public function deleteAction($$id, Request $$request){",
+				"\t$$response = Http::withToken(get_token())->delete(services('superadmin/${1:pekerjaan}/'.$$id));",
+			"",
+				"\tif($$response){",
+					"\t\tif($$response['status'] == true){",
+						"\t\t\treturn redirect()->back()->with([",
+							"\t\t\t\t'berhasil' => $$response['message'],",
+						"\t\t\t]);",
+					"\t\t} else {",
+						"\t\t\treturn redirect()->back()->with([",
+							"\t\t\t\t'gagal' => $$response['message'],",
+						"\t\t\t]);",
+					"\t\t}",
+				"\t} else {",
+					"\t\treturn redirect()->back()->with([",
+						"\t\t\t'gagal' => 'Timeout',",
+					"\t\t]);",
+				"\t}",
+			"}"
+		]
+	},
+	"use Http": {
+		"prefix": "usehttp",
+		"body": "use Illuminate\\Support\\Facades\\Http;"
+	},
+	"get_image KOMPIS": {
+		"prefix": "get_image",
+		"body": "<?php echo base_url('get_image?img='.$${1:data }); ?>"
+	}
+
+}

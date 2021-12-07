@@ -1,0 +1,37 @@
+{
+	"begin": {
+		"prefix": ["begin", "!"],
+		"body": [
+			"*{",
+			"\tmargin: 0;",
+			"\tpadding: 0;",
+			"\tbox-sizing: border-box;",
+			"}",
+			""
+		]
+	},
+	"flex center": {
+		"prefix": "flexcenter",
+		"body": [
+			"display: flex;",
+			"justify-content: center;",
+			"align-items: center;"
+		]
+	},
+	"media query": {
+		"prefix": "mediaquery",
+		"body": [
+			"@media (min-width: 576px) {",  
+			"}",
+			"",
+			"@media (min-width: 768px) {",
+			"}",
+			"",
+			"@media (min-width: 992px) {",
+			"}",
+			"",
+			"@media (min-width: 1200px) {",    
+			"}"
+		]
+	}
+}
