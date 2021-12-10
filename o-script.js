@@ -1,3 +1,7 @@
+$(function() {
+   console.log('ozhora-helper')
+})
+
 $(document).on('click', '#btn-logout', function(e) {
    e.preventDefault();
    swal({
