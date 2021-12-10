@@ -237,3 +237,22 @@ function formatKoma(angka){
 function formatNumber(num) {
    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
 }
+
+// Menghitung umur berdasarkan tgl lahir
+function get_age($date) {
+   // Format tanggal yang dibutuhkan yyyy-mm-dd ex: 2021-12-10
+   var today      = new Date();
+   var birthday   = new Date($date);
+   var year = 0;
+   if (today.getMonth() < birthday.getMonth()) {
+      year = 1;
+   } else if ((today.getMonth() == birthday.getMonth()) && today.getDate() < birthday.getDate()) {
+      year = 1;
+   }
+   var age = today.getFullYear() - birthday.getFullYear() - year;
+
+   if(age < 0){
+      age = 0;
+   }
+   return age;
+ }
