@@ -239,10 +239,10 @@ function formatNumber(num) {
 }
 
 // Menghitung umur berdasarkan tgl lahir
-function get_age($date) {
+function get_age(date) {
    // Format tanggal yang dibutuhkan yyyy-mm-dd ex: 2021-12-10
    var today      = new Date();
-   var birthday   = new Date($date);
+   var birthday   = new Date(date);
    var year = 0;
    if (today.getMonth() < birthday.getMonth()) {
       year = 1;
